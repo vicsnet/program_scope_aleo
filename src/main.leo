@@ -1,4 +1,4 @@
-import foo.leo;
+
 
 program program_scope.aleo {
     mapping balances: address => u64;
@@ -26,9 +26,10 @@ program program_scope.aleo {
     finalize mint_public(
         public receiver: address,
         public amount: u64,
+    
     ) {
-        let current_amount: u64 = Mapping::get_or_use(account, receiver, 0u64);
-        Mapping::set(account, receiver, current_amount + amount);
+        let current_amount: u64 = Mapping::get_or_use(balances, receiver, 0u64);
+        Mapping::set(balances, receiver, current_amount + amount);
    }
 
     function compute(a: u64, b: u64) -> u64 {
