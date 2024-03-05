@@ -3,15 +3,20 @@
 program program_scope.aleo {
     mapping balances: address => u64;
 
-    record token {
+// Declare a mapping that contains an array value
+mapping data: address => [bool; 8];
+        record token {
         owner: address,
         amount: u64,
     }
+    
 
     struct message {
         sender: address,
         object: u64,
     }
+
+    
 
     transition mint_public(
         public receiver: address,
